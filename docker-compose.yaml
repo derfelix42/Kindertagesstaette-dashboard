@@ -9,3 +9,5 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: root_password
       MARIADB_DATABASE: tagesstaette
+    volumes:
+      - ./config/mariadb:/docker-entrypoint-initdb.d
