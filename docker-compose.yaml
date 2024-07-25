@@ -4,10 +4,8 @@ services:
     build: .
     ports:
       - '80:80'
-    # environment:
-    #   - PORT=
-  postgres:
-    image: postgres:9.6.2-alpine
+  mariadb:
+    image: mariadb
     environment:
-      POSTGRES_USER: username
-      POSTGRES_DB: tagesstaette
+      MARIADB_ROOT_PASSWORD: root_password
+      MARIADB_DATABASE: j_tasks
