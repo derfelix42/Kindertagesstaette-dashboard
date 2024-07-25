@@ -9,8 +9,14 @@ const PORT = 80;
 app.use(express.static('static'));
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
+
+app.get('/api', async (req, res) => {
+    const rows = await query('SELECT 1 as val');
+    res.json(rows);
+}
+);
 
 async function main() {
     let rows = await query("SELECT 1 as val");
