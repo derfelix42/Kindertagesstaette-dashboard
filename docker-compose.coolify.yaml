@@ -11,8 +11,11 @@ services:
     image: mariadb
     environment:
       MARIADB_ROOT_PASSWORD: root_password
-      MARIADB_DATABASE: j_tasks
+      MARIADB_DATABASE: tagesstaette
     networks:
       my_network:
         aliases:
           - mariadb
+
+networks:
+  my_network:
