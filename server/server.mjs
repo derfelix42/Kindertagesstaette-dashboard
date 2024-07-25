@@ -18,5 +18,3 @@ async function main() {
 }
 
 main()
-
-console.log("Hostname:",os.hostname());

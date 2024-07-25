@@ -1,7 +1,7 @@
 import mariadb from 'mariadb';
 
 const host = process.env.DB_HOST || 'mariadb'
-console.log("DB Hostname", host)
+// console.log("DB Hostname", host)
 
 const pool = mariadb.createPool({
     host: host,
@@ -13,9 +13,13 @@ const pool = mariadb.createPool({
 });
 
 async function query(sql) {
-    const conn = await pool.getConnection();
-    const rows = await conn.query(sql);
-    return rows;
+    try {
+        const conn = await pool.getConnection();
+        const rows = await conn.query(sql);
+        return rows;
+    } catch (ex) {
+        console.log("error querying...")
+    }
 }
 
 
