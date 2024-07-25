@@ -9,6 +9,7 @@
   "author": "Felix Viola",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mariadb": "^3.3.1"
   }
 }
