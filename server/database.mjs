@@ -26,5 +26,8 @@ async function query(sql) {
     return rows;
 }
 
+async function getQuotes() {
+    return await query("SELECT * FROM quotes");
+}
 
-export { query }
+export { getQuotes }

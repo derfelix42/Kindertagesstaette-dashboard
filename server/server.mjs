@@ -1,6 +1,6 @@
 
 import express from 'express';
-import { query } from './database.mjs';
+import { getQuotes } from './database.mjs';
 import os from 'os';
 
 const app = express();
@@ -12,30 +12,30 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-app.get('/api', async (req, res) => {
-    const rows = await query('SELECT 1 as val');
+app.get('/quotes', async (req, res) => {
+    const rows = await getQuotes();
     res.json(rows);
 }
 );
 
-async function main() {
-    let rows = await query("SELECT 1 as val");
-    console.log(rows)
+// async function main() {
+//     let rows = await query("SELECT 1 as val");
+//     console.log(rows)
 
-    rows = await query("SELECT 1 as val");
-    console.log(rows)
+//     rows = await query("SELECT 1 as val");
+//     console.log(rows)
 
-    rows = await query("SELECT 1 as val");
-    console.log(rows)
+//     rows = await query("SELECT 1 as val");
+//     console.log(rows)
 
-    rows = await query("SELECT 1 as val");
-    console.log(rows)
+//     rows = await query("SELECT 1 as val");
+//     console.log(rows)
 
-    rows = await query("SELECT 1 as val");
-    console.log(rows)
+//     rows = await query("SELECT 1 as val");
+//     console.log(rows)
 
-    rows = await query("SELECT 1 as val");
-    console.log(rows)
-}
+//     rows = await query("SELECT 1 as val");
+//     console.log(rows)
+// }
 
-main()
+// main()
