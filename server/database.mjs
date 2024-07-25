@@ -13,13 +13,17 @@ const pool = mariadb.createPool({
 });
 
 async function query(sql) {
+    let rows;
+    let conn;
     try {
-        const conn = await pool.getConnection();
-        const rows = await conn.query(sql);
-        return rows;
+        conn = await pool.getConnection();
+        rows = await conn.query(sql);
     } catch (ex) {
         console.log("error querying...")
+    } finally {
+        conn.end();
     }
+    return rows;
 }
 
 

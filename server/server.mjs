@@ -13,7 +13,22 @@ app.listen(PORT, () => {
 });
 
 async function main() {
-    const rows = await query("SELECT 1 as val");
+    let rows = await query("SELECT 1 as val");
+    console.log(rows)
+
+    rows = await query("SELECT 1 as val");
+    console.log(rows)
+
+    rows = await query("SELECT 1 as val");
+    console.log(rows)
+
+    rows = await query("SELECT 1 as val");
+    console.log(rows)
+
+    rows = await query("SELECT 1 as val");
+    console.log(rows)
+
+    rows = await query("SELECT 1 as val");
     console.log(rows)
 }
 
