@@ -1,9 +1,12 @@
 import mariadb from 'mariadb';
 
+const host = process.env.DB_HOST || 'mariadb'
+console.log("DB Hostname", host)
+
 const pool = mariadb.createPool({
-    host: process.env.DB_HOST || 'mariadb',
-    user: 'root',
-    password: 'root_password',
+    host: host,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASS || 'root_password',
     database: "tagesstaette",
 
     connectionLimit: 5
