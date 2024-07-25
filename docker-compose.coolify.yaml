@@ -1,0 +1,11 @@
+version: "2"
+services:
+  web:
+    build: .
+    # ports:
+    #   - '80:80'
+  mariadb:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root_password
+      MARIADB_DATABASE: j_tasks
