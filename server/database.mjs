@@ -21,7 +21,7 @@ async function query(sql) {
     } catch (ex) {
         console.log("error querying...")
     } finally {
-        conn.end();
+        conn?.end();
     }
     return rows;
 }
