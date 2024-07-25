@@ -2,6 +2,8 @@ import mariadb from 'mariadb';
 
 let connection;
 
+console.log("Coolify name:",process.env.coolify.name)
+
 const pool = mariadb.createPool({
     host: 'mariadb',
     user: 'root',

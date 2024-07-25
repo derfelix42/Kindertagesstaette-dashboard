@@ -1,6 +1,7 @@
 
 import express from 'express';
 import { query } from './database.mjs';
+import os from 'os';
 
 const app = express();
 const PORT = 80;
@@ -17,3 +18,5 @@ async function main() {
 }
 
 main()
+
+console.log("Hostname:",os.hostname());
