@@ -4,8 +4,15 @@ services:
     build: .
     # ports:
     #   - '80:80'
+    networks:
+      - my_network
+
   mariadb:
     image: mariadb
     environment:
       MARIADB_ROOT_PASSWORD: root_password
       MARIADB_DATABASE: j_tasks
+    networks:
+      my_network:
+        aliases:
+          - mariadb
