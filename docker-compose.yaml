@@ -4,6 +4,8 @@ services:
     build: .
     ports:
       - '80:80'
+    volumes:
+      - ./server/static:/usr/src/app/static
   mariadb:
     image: mariadb
     environment:
