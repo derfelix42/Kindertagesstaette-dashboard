@@ -4,18 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>SHK-Kindertagesstätte | Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>SHKindertagesstätte | Dashboard</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <img src="/images/favicon.ico" alt="Favicon" class="favicon">
+            <ul>
+                <li><a href="#quotes">Quotes</a></li>
+                <li><a href="#add-quote-form">Add Quote</a></li>
+                <li><a href="#author-stats">Author Stats</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <h1>Dashboard SHK-Kindertagesstätte</h1>
-        <p>Test, test, Hallo Welt!</p>
-        <p>Test, test, Hallo Welt! asdlkfjabrob</p>
+        <h1>Dashboard SHKindertagesstätte</h1>
     
-        <section class="quote">
-            <p>The only way to get rid of a temptation is to yield to it.</p>
-            <span class="author">Oscar Wilde</span>
+        <template id="quote-template">
+            <section class="quote">
+                <p></p>
+                <span class="author"></span>
+                <span class="recipient"></span>
+                <span class="emotion"></span>
+            </section>
+        </template>
+
+        <template id="author-stats-template">
+            <tr>
+                <td class="author-name"></td>
+                <td class="quote-count"></td>
+            </tr>
+        </template>
+
+        <div id="quotes-container">
+            <h2>Quotes</h2>
+            <div id="options-bar">
+                <form id="search-form">
+                    <input autofocus id="search-input" type="search" placeholder="Search Quotes">
+                    <button id="search-btn" type="submit" >
+                        <img id="search-icon" src="/images/search-icon.svg" alt="Search">
+                    </button>
+                </form>
+                <div id="sort-selection">
+                    <label for="sort-by">Sort By:</label>
+                    <select id="sort-by">
+                        <option value="author">Author</option>
+                        <option value="recipient">Recipient</option>
+                        <option value="created">Created</option>
+                    </select>
+                    <button id="sort-btn" type="button">Sort</button>
+                </div>
+            </div>
+            
+            <div id="quotes">
+                
+            </div>
+
+            <div id="load-quotes-btn-container" >
+                <button id="load-quotes-btn" type="button">Load Quotes</button>
+            </div>
+        </div>
+
+        <form id="add-quote-form">
+            <label for="add-quote-form">Add Quote</label>
+            <input id="quote-input" class="quote-input" type="text" name="quote" placeholder="Quote" required>
+            <input id="author-input" class="author-input" type="text" name="author" placeholder="Author" required>
+            <input id="recipient-input" type="text" name="recipient" placeholder="Recipient">
+            <input id="emotion-input" type="text" name="emotion" placeholder="Emotion">
+            <br/>
+            <button id="add-quote-btn" type="submit">Add Quote</button>
+        </form>
+
+        <section id="author-stats">
+            <h2>Author Stats</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Author</th>
+                        <th>Number of Quotes</th>
+                    </tr>
+                </thead>
+                <tbody id="author-stats-list"></tbody>
+            </table>
+            <button id="load-author-stats-btn" type="button">Load Author Stats</button>
         </section>
+        
     </main>
+    <script src="quotes.js"></script>
 </body>
 </html>

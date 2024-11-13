@@ -3,13 +3,14 @@ services:
   web:
     build: .
     ports:
-      - '80:80'
+      - '80:8000'
     volumes:
       - ./server/static:/usr/src/app/static
   mariadb:
     image: mariadb
     environment:
       MARIADB_ROOT_PASSWORD: root_password
-      MARIADB_DATABASE: tagesstaette
+      MARIADB_DATABASE: "tagesstaette"
     volumes:
       - ./config/mariadb:/docker-entrypoint-initdb.d
+      - ./quotes.csv:/data/quotes.csv
