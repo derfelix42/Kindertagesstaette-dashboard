@@ -1,41 +1,40 @@
 
 import express from 'express';
-import { getQuotes } from './database.mjs';
-import os from 'os';
+import { addQuote, getAuthorStats, getQuotes, getQuotesFromAuthor } from './database.mjs';
+import bodyParser from 'body-parser';
 
 const app = express();
-const PORT = 80;
+const PORT = 8000;
 
 app.use(express.static('static'));
+app.use(bodyParser.json());
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
+
 app.get('/quotes', async (req, res) => {
     const rows = await getQuotes();
-    res.json(rows);
-}
-);
+    return res.json(rows);
+});
 
-// async function main() {
-//     let rows = await query("SELECT 1 as val");
-//     console.log(rows)
+app.post('/quotes', async(req, res) => {
+    const data = req.body;
+    const success = await addQuote(data['author'], data['quote'], data['recipient'], data['emotion']);
+    return res.json({"success": success});
+});
 
-//     rows = await query("SELECT 1 as val");
-//     console.log(rows)
+app.get('/stats', async(req, res) => {
+    const rows = await getAuthorStats();
+    const statsConverted = rows?.map(row => ({
+        author: row.author,
+        count: Number(row.count) // Convert BigInt to Number
+    }));
+    return res.json(statsConverted);
+});
 
-//     rows = await query("SELECT 1 as val");
-//     console.log(rows)
-
-//     rows = await query("SELECT 1 as val");
-//     console.log(rows)
-
-//     rows = await query("SELECT 1 as val");
-//     console.log(rows)
-
-//     rows = await query("SELECT 1 as val");
-//     console.log(rows)
-// }
-
-// main()
+app.get('/quotes/:author', async(req, res) => {
+    const rows = await getQuotesFromAuthor(req.params.author);
+    return res.json(rows);
+});
